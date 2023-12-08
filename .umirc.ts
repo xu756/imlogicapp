@@ -1,7 +1,10 @@
 import { defineConfig } from '@umijs/max';
 
 export default defineConfig({
-    antd: {},
+    antd: {
+        
+
+    },
     access: {},
     model: {},
     initialState: {},
@@ -16,7 +19,6 @@ export default defineConfig({
         {
             name: '首页',
             path: '/home',
-            layout: false,
             component: '@/pages/Home',
             access: 'user',
         },

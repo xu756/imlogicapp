@@ -13,12 +13,13 @@ export const layout: RunTimeLayoutConfig = () => {
         logo: 'https://img.alicdn.com/tfs/TB1YHEpwUT1gK0jSZFhXXaAtVXa-28-27.svg',
         menu: {
             locale: false,
+            type: 'group',
         },
         layout: 'mix',
         fixSiderbar: true,
         siderWidth: 200,
         rightContentRender: () => <RightContent />,
-        // footerRender: () => <Footer />,
+        footerRender: () => <div>footer</div>,
         token: {},
     };
 };
