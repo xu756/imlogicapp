@@ -22,6 +22,12 @@ export default defineConfig({
             component: '@/pages/Home',
             access: 'user',
         },
+        {
+            name: '聊天',
+            path: '/chat',
+            component: '@/pages/Home',
+            access: 'user',
+        },
     ],
     npmClient: 'pnpm',
 });

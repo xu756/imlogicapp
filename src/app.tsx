@@ -16,10 +16,16 @@ export const layout: RunTimeLayoutConfig = () => {
             type: 'group',
         },
         layout: 'mix',
-        fixSiderbar: true,
-        siderWidth: 200,
+        siderWidth: 100,
+        collapsed: false,
+        collapsedButtonRender: false,
         rightContentRender: () => <RightContent />,
         footerRender: () => <div>footer</div>,
-        token: {},
+        token: {
+            sider:{
+                paddingInlineLayoutMenu: 0,
+            }
+        },
+    
     };
 };
