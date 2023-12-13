@@ -32,6 +32,10 @@ export const layout: RunTimeLayoutConfig = () => {
                 paddingInlinePageContainerContent:10,
             }
         },
+        waterMarkProps:{
+            content:'im聊天',
+            width:200,
+        }
     
     };
 };

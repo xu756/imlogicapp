@@ -25,7 +25,7 @@ export default defineConfig({
         {
             name: '聊天',
             path: '/chat',
-            component: '@/pages/Home',
+            component: '@/pages/Chat',
             access: 'user',
         },
     ],

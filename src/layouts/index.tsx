@@ -19,6 +19,11 @@ export default () => {
     });
     return (
         <PageContainer
+            style={{
+                padding: 0,
+                margin: 0,
+                minHeight: 'calc(100vh - 56px)',
+            }}
             header={{
                 extra:[
                     <Button key="1" type="primary">新建</Button>,
