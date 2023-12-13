@@ -4,7 +4,7 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 
 import { PageContainer } from '@ant-design/pro-components';
 import { history,useAccess,useLocation } from '@umijs/max';
-import { message,FloatButton } from 'antd';
+import { message,FloatButton, Button } from 'antd';
 
 
 const LoginPath = '/login';
@@ -18,9 +18,11 @@ export default () => {
         }
     });
     return (
-        <PageContainer 
+        <PageContainer
             header={{
-                title: '',
+                extra:[
+                    <Button key="1" type="primary">新建</Button>,
+                ]
             }}
         >
             <FloatButton tooltip="点击反馈" href='#' target="_blank" icon={<QuestionCircleOutlined />} type="primary" style={{ right: 24 }} />

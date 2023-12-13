@@ -15,15 +15,21 @@ export const layout: RunTimeLayoutConfig = () => {
             locale: false,
             type: 'group',
         },
-        layout: 'mix',
+        layout: 'top',
         siderWidth: 100,
-        collapsed: false,
         collapsedButtonRender: false,
         rightContentRender: () => <RightContent />,
-        footerRender: () => <div>footer</div>,
+        // footerRender: () => <div>footer</div>,
+        // headerContentRender: () => <>header</>,
         token: {
+            
             sider:{
                 paddingInlineLayoutMenu: 0,
+            },
+            pageContainer:{
+                paddingBlockPageContainerContent:0,
+                marginInlinePageContainerContent:0,
+                paddingInlinePageContainerContent:10,
             }
         },
     
