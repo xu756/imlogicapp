@@ -1,4 +1,4 @@
-FROM node:18.18.1-alpine3.18
+FROM node:18.18.1
 # install vscode and extension
 RUN npm install -g pnpm
 RUN git config --global user.name "xu756"
