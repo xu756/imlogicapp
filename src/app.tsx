@@ -12,7 +12,7 @@ import { delCookie, getCookie } from './utils';
 dayjs.extend(relativeTime); // 使用插件
 dayjs.locale('zh-cn'); // 使用本地化语言
 export async function getInitialState() {
-  const token = getCookie('AppAdminToken');
+  const token = getCookie('ImlogicToken');
   if (
     history.location.pathname === '/login' ||
     localStorage.getItem('session_id') === null
@@ -33,7 +33,7 @@ export async function getInitialState() {
         access = res;
       })
       .catch((e) => {
-        delCookie('AppAdminToken');
+        delCookie('ImlogicToken');
       });
   }
   return {
@@ -79,7 +79,7 @@ export const request: RequestConfig = {
   requestInterceptors: [
     (config: any) => {
       // cookie 读取token
-      const jwt = getCookie('AppAdminToken');
+      const jwt = getCookie('ImlogicToken');
       config.url = '/api/admin' + config.url;
       config.headers.Authorization = jwt;
       return config;
@@ -104,7 +104,7 @@ export const request: RequestConfig = {
           message.error({
             content: '无权限，请重新登录',
           });
-          delCookie('AppAdminToken');
+          delCookie('ImlogicToken');
           history.push('/login');
           break;
         case 204:

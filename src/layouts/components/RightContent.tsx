@@ -10,7 +10,7 @@ import { Avatar, Button, Dropdown, Space } from 'antd';
 import styles from './index.less';
 export default () => {
   const logout = () => {
-    delCookie('AppAdminToken');
+    delCookie('ImlogicToken');
     history.push('/login');
   };
   const items: MenuProps['items'] = [

@@ -25,7 +25,7 @@ export default () => {
   const [loginType, setLoginType] = useState<LoginType>('account');
   const { setInitialState } = useModel('@@initialState');
   const sessionId = localStorage.getItem('session_id');
-  const [jwt, setJwt] = useCookieState('AppAdminToken');
+  const [jwt, setJwt] = useCookieState('ImlogicToken');
   useMount(() => {
     if (!sessionId) {
       localStorage.setItem('session_id', uuidv4());
