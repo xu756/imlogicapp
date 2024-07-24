@@ -1,6 +1,5 @@
-import { ProSkeleton } from '@ant-design/pro-components';
-const LoadingPage = () => {
-    return <ProSkeleton/>;
-};
+import { Skeleton } from 'antd';
 
-export default LoadingPage;
+export default () => {
+  return <Skeleton />;
+};

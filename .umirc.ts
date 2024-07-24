@@ -30,4 +30,12 @@ export default defineConfig({
         },
     ],
     npmClient: 'pnpm',
+    // /api 会被代理到 http://
+    proxy: {
+      '/api': {
+        target: 'https://dev.imlogic.cn/api/',
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    },
 });

@@ -1,6 +1,3 @@
-export default (initialState:any) => {
-    console.log(initialState);
-    return {
-        user:initialState.User.userName !==''
-    };
+export default (initialState: any) => {
+  return initialState?.access || {};
 };
