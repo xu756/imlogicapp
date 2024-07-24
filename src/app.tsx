@@ -80,7 +80,8 @@ export const request: RequestConfig = {
     (config: any) => {
       // cookie 读取token
       const jwt = getCookie('ImlogicToken');
-      config.url = '/api/admin' + config.url;
+      // config.url = '/api/admin' + config.url;
+      config.url = '/api' + config.url;
       config.headers.Authorization = jwt;
       return config;
     },
