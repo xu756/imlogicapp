@@ -1,5 +1,4 @@
 import { DEFAULT_LOGO, DEFAULT_TITLE } from '@/constants';
-import { getUserAccess } from '@/services';
 import { RequestConfig } from '@@/plugin-request/request';
 import { history, RunTimeLayoutConfig } from '@umijs/max';
 import { message } from 'antd';
@@ -26,33 +25,33 @@ export async function getInitialState() {
     console.log(document.cookie);
     return {};
   }
-  let access = {};
-  if (history.location.pathname !== '/login') {
-    await getUserAccess()
-      .then((res) => {
-        access = res;
-      })
-      .catch((e) => {
-        delCookie('ImlogicToken');
-      });
-  }
+  // let access = {};
+  // if (history.location.pathname !== '/login') {
+  //   await getUserAccess()
+  //     .then((res) => {
+  //       access = res;
+  //     })
+  //     .catch((e) => {
+  //       delCookie('ImlogicToken');
+  //     });
+  // }
   return {
-    access: access,
+    // access: access,
   };
 }
 
 export const layout: RunTimeLayoutConfig = () => {
   return {
-    title: DEFAULT_TITLE,
+    title: 'Imlogic',
     logo: <img src={DEFAULT_LOGO} alt="logo" style={{ width: 30 }} />,
     menu: {
       locale: false,
     },
-    contentWidth: 'Fluid',
+    contentWidth: 'Fixed',
     fixedHeader: false,
     fixSiderbar: true,
     colorWeak: false,
-    layout: 'mix',
+    layout: 'side',
     siderWidth: 200,
     rightContentRender: RightContent,
     waterMarkProps: {

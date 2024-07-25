@@ -59,7 +59,7 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
-        updateUserAccess();
+        // updateUserAccess();
       } catch (e) {
         form.resetFields();
       }
@@ -70,7 +70,7 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
-        updateUserAccess();
+        // updateUserAccess();
       } catch (e) {
         form.resetFields();
       }
