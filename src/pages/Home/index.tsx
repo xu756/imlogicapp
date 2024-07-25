@@ -2,7 +2,7 @@ import { PageContainer } from '@ant-design/pro-components';
 import { useAccess } from '@umijs/max';
 import { useMount } from 'ahooks';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
-
+import styles from './index.less';
 export default () => {
   const access = useAccess();
 
@@ -17,11 +17,13 @@ export default () => {
       }}
     >
       <PanelGroup autoSaveId="example" direction="horizontal">
-        <Panel defaultSize={25}>1</Panel>
-        <PanelResizeHandle />
+        <Panel minSize={25}>1</Panel>
+        <PanelResizeHandle className={styles.resizable} />
         <Panel>2</Panel>
-        <PanelResizeHandle />
-        <Panel defaultSize={25}>3</Panel>
+        <PanelResizeHandle className={styles.resizable} />
+        <Panel defaultSize={25} collapsible>
+          3
+        </Panel>
       </PanelGroup>
     </PageContainer>
   );
