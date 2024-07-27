@@ -1,4 +1,22 @@
+.layout {
+  min-height: calc(100vh - 56px);
+}
 .resizable {
-  width: 3px;
-  background-color: aqua;
+  min-height: 100%;
+  max-height: 100vh;
+  width: 6px;
+  background: #f0f0f0;
+  cursor: col-resize !important;
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+.chatlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  background: #fff;
 }

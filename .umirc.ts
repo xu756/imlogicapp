@@ -14,14 +14,9 @@ export default defineConfig({
       layout: false,
     },
     {
-      name: '首页',
+      name: '聊天',
       path: '/home',
       component: '@/pages/Home',
-    },
-    {
-      name: '聊天',
-      path: '/chat',
-      component: '@/pages/Chat',
     },
     {
       name: '登录',

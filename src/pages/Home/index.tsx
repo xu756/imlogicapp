@@ -1,25 +1,38 @@
-import { PageContainer } from '@ant-design/pro-components';
+import Chat from '@/components/chat';
 import { useMount } from 'ahooks';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import styles from './index.less';
+
 export default () => {
   useMount(() => {});
 
   return (
-    <PageContainer
-      header={{
-        title: false,
-      }}
+    <PanelGroup
+      autoSaveId="dashboard"
+      direction="horizontal"
+      className={styles.layout}
     >
-      <PanelGroup autoSaveId="example" direction="horizontal">
-        <Panel minSize={25}>1</Panel>
-        <PanelResizeHandle className={styles.resizable} />
-        <Panel>2</Panel>
-        <PanelResizeHandle className={styles.resizable} />
-        <Panel defaultSize={25} collapsible>
-          3
-        </Panel>
-      </PanelGroup>
-    </PageContainer>
+      <Panel
+        defaultSize={20}
+        minSize={20}
+        maxSize={40}
+        className={styles.chatlist}
+      >
+        side
+      </Panel>
+      <PanelResizeHandle className={styles.resizable} />
+      <Panel className={styles.content}>
+        <Chat />
+      </Panel>
+      <PanelResizeHandle className={styles.resizable} />
+      <Panel
+        defaultSize={20}
+        minSize={20}
+        maxSize={40}
+        className={styles.chatlist}
+      >
+        side
+      </Panel>
+    </PanelGroup>
   );
 };

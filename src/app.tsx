@@ -12,33 +12,39 @@ export async function getInitialState() {
   const InitData: Store.Init = {
     loading: false,
     logo: 'https://cos.imlogic.cn/appserver/images/logo.svg',
-    name: '智云工坊管理系统',
+    name: 'Imlogic',
     version: '1.0.0',
     description: '让科技生活更简单',
   };
   return InitData;
 }
-export const layout = () => {
+export const layout: any = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { initialState } = useModel('@@initialState');
 
   return {
-    title: 'Imlogic',
+    title: false,
     logo: <img src={initialState?.logo} alt="logo" style={{ width: 30 }} />,
     menu: {
       locale: false,
     },
-    contentWidth: 'Fixed',
     fixedHeader: false,
     fixSiderbar: true,
     colorWeak: false,
-    layout: 'side',
-    siderWidth: 200,
+    layout: 'mix',
+    siderWidth: 70,
     rightContentRender: RightContent,
+    collapsedButtonRender: false,
     waterMarkProps: {
       content: [initialState?.name, '管理员'],
     },
-    token: {},
+
+    token: {
+      pageContainer: {
+        paddingBlockPageContainerContent: 0,
+        paddingInlinePageContainerContent: 0,
+      },
+    },
   };
 };
 interface ResponseStructure {
