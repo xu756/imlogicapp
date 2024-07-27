@@ -14,8 +14,8 @@ declare namespace Model {
     updated_at: string;
     // 删除状态
     deleted: boolean;
-        // uuid
-        uuid: string;
+    // uuid
+    uuid: string;
     // 修改人
     editor: number;
 
@@ -28,7 +28,6 @@ declare namespace Model {
     // 头像
     avatar: string;
     // 描述
-    desc:string;
+    desc: string;
   }
-  
 }

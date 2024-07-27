@@ -1,18 +1,18 @@
 {
-    "deepscan.ignoreConfirmWarning": true,
-    "[typescript]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
-      "[less]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      },
-      "[json]": {
-        "editor.formatOnSave": true,
-        "editor.formatOnType": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-      }
+  "deepscan.ignoreConfirmWarning": true,
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[less]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.formatOnSave": true,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

@@ -1,49 +1,30 @@
-import { DEFAULT_LOGO, DEFAULT_TITLE } from '@/constants';
 import { RequestConfig } from '@@/plugin-request/request';
-import { history, RunTimeLayoutConfig } from '@umijs/max';
+import { history, useModel } from '@umijs/max';
 import { message } from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn'; // 导入本地化语言
 import relativeTime from 'dayjs/plugin/relativeTime'; // 导入插件
-import { v4 as uuidv4 } from 'uuid';
 import RightContent from './layouts/components/RightContent';
 import { delCookie, getCookie } from './utils';
 dayjs.extend(relativeTime); // 使用插件
 dayjs.locale('zh-cn'); // 使用本地化语言
 export async function getInitialState() {
-  const token = getCookie('ImlogicToken');
-  if (
-    history.location.pathname === '/login' ||
-    localStorage.getItem('session_id') === null
-  ) {
-    const sessionId = uuidv4();
-    localStorage.setItem('session_id', sessionId);
-  }
-  if (history.location.pathname !== '/login' && !token) {
-    history.push('/login');
-    message.error('登录超时');
-    console.log(document.cookie);
-    return {};
-  }
-  // let access = {};
-  // if (history.location.pathname !== '/login') {
-  //   await getUserAccess()
-  //     .then((res) => {
-  //       access = res;
-  //     })
-  //     .catch((e) => {
-  //       delCookie('ImlogicToken');
-  //     });
-  // }
-  return {
-    // access: access,
+  const InitData: Store.Init = {
+    loading: false,
+    logo: 'https://cos.imlogic.cn/appserver/images/logo.svg',
+    name: '智云工坊管理系统',
+    version: '1.0.0',
+    description: '让科技生活更简单',
   };
+  return InitData;
 }
+export const layout = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { initialState } = useModel('@@initialState');
 
-export const layout: RunTimeLayoutConfig = () => {
   return {
     title: 'Imlogic',
-    logo: <img src={DEFAULT_LOGO} alt="logo" style={{ width: 30 }} />,
+    logo: <img src={initialState?.logo} alt="logo" style={{ width: 30 }} />,
     menu: {
       locale: false,
     },
@@ -55,7 +36,7 @@ export const layout: RunTimeLayoutConfig = () => {
     siderWidth: 200,
     rightContentRender: RightContent,
     waterMarkProps: {
-      content: [DEFAULT_TITLE, '管理员'],
+      content: [initialState?.name, '管理员'],
     },
     token: {},
   };

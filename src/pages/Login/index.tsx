@@ -1,5 +1,4 @@
-import { DEFAULT_DESCRIPTION, DEFAULT_TITLE } from '@/constants';
-import { accountLogin, getUserAccess, mobileLogin } from '@/services';
+import { accountLogin, mobileLogin } from '@/services';
 
 import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import {
@@ -23,7 +22,7 @@ export default () => {
   const { token } = theme.useToken();
   const [form] = ProForm.useForm();
   const [loginType, setLoginType] = useState<LoginType>('account');
-  const { setInitialState } = useModel('@@initialState');
+  const { initialState } = useModel('@@initialState');
   const sessionId = localStorage.getItem('session_id');
   const [jwt, setJwt] = useCookieState('ImlogicToken');
   useMount(() => {
@@ -34,19 +33,6 @@ export default () => {
       navigate('/');
     }
   });
-  // 获取用户权限
-  const updateUserAccess = async () => {
-    try {
-      const res = await getUserAccess();
-      setInitialState({
-        access: res,
-      });
-      message.success('登录成功！');
-      navigate('/');
-    } catch (e) {
-      message.error('获取用户权限失败！');
-    }
-  };
 
   // 登录
   const handleLogin = async (values: API.LoginReq) => {
@@ -59,6 +45,8 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
+        message.success('登录成功！');
+        navigate('/');
         // updateUserAccess();
       } catch (e) {
         form.resetFields();
@@ -70,6 +58,8 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
+        message.success('登录成功！');
+        navigate('/');
         // updateUserAccess();
       } catch (e) {
         form.resetFields();
@@ -86,13 +76,13 @@ export default () => {
             username: 'admin',
             password: '123456',
           }}
-          logo="https://cos.imlogic.cn/appserver/images/logo.svg"
-          title={DEFAULT_TITLE}
+          logo={initialState?.logo}
+          title={initialState?.name}
           onFinish={handleLogin}
           onFinishFailed={() => {
             message.error('请检查登录信息！');
           }}
-          subTitle={DEFAULT_DESCRIPTION}
+          subTitle={initialState?.description}
         >
           <Tabs
             centered
