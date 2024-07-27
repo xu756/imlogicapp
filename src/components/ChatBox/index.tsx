@@ -1,24 +1,26 @@
 import { useModel } from '@umijs/max';
-import { Layout } from 'antd';
 import ChatFooter from './ChatFooter';
 import ChatHeader from './ChatHeader';
 import ChatList from './ChatList';
-const { Header, Footer, Content } = Layout;
+import './index.less';
+import styles from './index.less';
+
 const Chat = () => {
   const { initialState } = useModel('@@initialState');
   return (
-    <Layout className="h100">
-      <Header>
+    <div className={styles.layout}>
+      <div className={styles.header}>
         <ChatHeader username={initialState?.name} avatar={initialState?.logo} />
         <div className="chat-line" />
-      </Header>
-      <Content>
+      </div>
+      <div className={styles.content}>
         <ChatList />
-      </Content>
-      <Footer>
+      </div>
+      <div className={styles.footer}>
+        <div className="chat-line" />
         <ChatFooter />
-      </Footer>
-    </Layout>
+      </div>
+    </div>
   );
 };
 

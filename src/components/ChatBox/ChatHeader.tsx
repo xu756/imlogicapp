@@ -1,5 +1,4 @@
 import { Avatar, Button, Space } from 'antd';
-import './index.less';
 
 interface IData {
   username?: string;

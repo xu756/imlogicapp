@@ -1,9 +1,7 @@
-import './index.less';
-
 const ChatList = () => {
   return (
     <div className="chat-body">
-      <div>222211</div>
+      <div style={{ height: '100vh' }}>222211</div>
     </div>
   );
 };

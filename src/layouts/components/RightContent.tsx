@@ -35,14 +35,13 @@ export default () => {
   ];
 
   return (
-    <Dropdown menu={{ items }} placement="bottomRight">
+    <Dropdown menu={{ items }} placement="bottomLeft">
       <Button type="text" block className={styles.btn}>
-        <Space size={10}>
+        <Space size={10} direction="vertical">
           <Avatar
             src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
             alt="avatar"
           />
-          <span>用户名</span>
         </Space>
       </Button>
     </Dropdown>

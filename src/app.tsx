@@ -31,7 +31,7 @@ export const layout: any = () => {
     fixedHeader: false,
     fixSiderbar: true,
     colorWeak: false,
-    layout: 'mix',
+    layout: 'side',
     siderWidth: 70,
     rightContentRender: RightContent,
     collapsedButtonRender: false,

@@ -1,4 +1,4 @@
-import Chat from '@/components/chat';
+import ChatBox from '@/components/ChatBox';
 import { useMount } from 'ahooks';
 import { Panel, PanelGroup, PanelResizeHandle } from 'react-resizable-panels';
 import styles from './index.less';
@@ -22,7 +22,7 @@ export default () => {
       </Panel>
       <PanelResizeHandle className={styles.resizable} />
       <Panel className={styles.content}>
-        <Chat />
+        <ChatBox />
       </Panel>
       <PanelResizeHandle className={styles.resizable} />
       <Panel
