@@ -73,7 +73,7 @@ export default () => {
           form={form}
           initialValues={{
             autoLogin: true,
-            username: 'admin',
+            username: 'user1',
             password: '123456',
           }}
           logo={initialState?.logo}
