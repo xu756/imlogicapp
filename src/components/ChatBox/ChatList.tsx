@@ -1,7 +1,20 @@
+import { useModel } from '@umijs/max';
+
 const ChatList = () => {
+  const { chatMsgs, lastMsg } = useModel('chat', (model) => ({
+    chatMsgs: model.chatMsgs,
+    lastMsg: model.lastMsg,
+  }));
   return (
     <div className="chat-body">
-      <div style={{ height: '100vh' }}>222211</div>
+      {Array.from(chatMsgs).map((msg) => (
+        <div key={msg.msg_id} className="chat-message">
+          <div className="chat-sender">{msg.sender}</div>
+          <div className="chat-text">{msg.content}</div>
+          <div className="chat-timestamp">{msg.timestamp}</div>
+        </div>
+      ))}
+      {JSON.stringify(lastMsg)}
     </div>
   );
 };
