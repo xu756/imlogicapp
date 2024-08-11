@@ -1,4 +1,4 @@
-import { ChatTypeValue } from '@/typings/msg/enum';
+import { ChatType } from '@/typings/msg/enum';
 export class WebSocketService {
   private ws: WebSocket | null = null;
   private readonly url: string;
@@ -22,13 +22,21 @@ export class WebSocketService {
     };
     this.ws.onmessage = (e) => {
       const data: Msg.Message = JSON.parse(e.data);
-      if (
-        data.chat_type === ChatTypeValue.SystemMessage &&
-        data.content === 'pong'
-      ) {
-        return;
+      switch (data.chat_type) {
+        case ChatType.PrivateChat:
+          this.msgLogic(data);
+          break;
+        case ChatType.GroupChat:
+          this.msgLogic(data);
+          break;
+        case ChatType.SystemMessage:
+          break;
+        case ChatType.SystemNotice:
+          break;
+        default:
+          console.log('Unknown message:', data);
+          break;
       }
-      this.msgLogic(data);
     };
 
     this.ws.onclose = () => {
@@ -60,10 +68,10 @@ export class WebSocketService {
     this.heartbeatTimer = setInterval(() => {
       this.send({
         sender: this.sender,
-        chat_type: ChatTypeValue.SystemMessage,
+        chat_type: ChatType.SystemMessage,
         timestamp: Date.now(),
         content: 'ping',
-      });
+      } as Msg.Message);
     }, 10000);
   }
 }

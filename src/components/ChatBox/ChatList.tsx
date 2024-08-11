@@ -1,20 +1,17 @@
 import { useModel } from '@umijs/max';
+import MessageItem from '../Message.tsx';
 
 const ChatList = () => {
-  const { chatMsgs, lastMsg } = useModel('chat', (model) => ({
-    chatMsgs: model.chatMsgs,
-    lastMsg: model.lastMsg,
+  let chat_id = 2222;
+  const { getChatMsgs } = useModel('chat', (model) => ({
+    getChatMsgs: model.getChatMsgs,
   }));
   return (
     <div className="chat-body">
-      {Array.from(chatMsgs.entries()).map(([msg_id, msg]) => (
-        <div key={msg.msg_id} className="chat-message" id={`msg-${msg_id}`}>
-          <div className="chat-sender">{msg.sender}</div>
-          <div className="chat-text">{msg.content}</div>
-          <div className="chat-timestamp">{msg.timestamp}</div>
-        </div>
+      {getChatMsgs(chat_id)?.map((msg) => (
+        <MessageItem key={msg.msg_id} {...msg} />
       ))}
-      {JSON.stringify(lastMsg)}
+      {JSON.stringify(getChatMsgs(chat_id))}
     </div>
   );
 };

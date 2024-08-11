@@ -6,7 +6,7 @@
  * 3: 音频
  * 4: 视频
  */
-export enum MsgTypeValue {
+export enum MsgType {
   Text = 0,
   Image = 1,
   File = 2,
@@ -21,7 +21,7 @@ export enum MsgTypeValue {
  * 2: 系统消息
  * 3: 系统通知
  */
-export enum ChatTypeValue {
+export enum ChatType {
   PrivateChat = 0,
   GroupChat = 1,
   SystemMessage = 2,

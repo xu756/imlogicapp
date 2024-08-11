@@ -1,20 +1,22 @@
 declare namespace Msg {
+  import { MsgType, ChatType } from './enum';
+
   /**
    * 消息
    */
   export type Message = {
-    chat_id?: number;
-    chat_type?: ChatType;
-    group_id?: number;
-    link_id?: string;
-    msg_id?: string;
-    msg_meta?: MsgMeta;
-    msg_type?: MsgType;
-    sender: ?number;
-    receiver?: number;
-    timestamp?: number;
-    content?: string;
-    media?: MediaType[];
+    chat_id: number;
+    chat_type: ChatType;
+    group_id: number;
+    link_id: string;
+    msg_id: string;
+    msg_meta: MsgMeta;
+    msg_type: MsgType;
+    sender: number;
+    receiver: number;
+    timestamp: number;
+    content: string;
+    media: MediaType[];
   };
 
   /**
