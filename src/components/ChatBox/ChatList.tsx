@@ -7,8 +7,8 @@ const ChatList = () => {
   }));
   return (
     <div className="chat-body">
-      {Array.from(chatMsgs).map((msg) => (
-        <div key={msg.msg_id} className="chat-message">
+      {Array.from(chatMsgs.entries()).map(([msg_id, msg]) => (
+        <div key={msg.msg_id} className="chat-message" id={`msg-${msg_id}`}>
           <div className="chat-sender">{msg.sender}</div>
           <div className="chat-text">{msg.content}</div>
           <div className="chat-timestamp">{msg.timestamp}</div>

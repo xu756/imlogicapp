@@ -3,47 +3,20 @@ declare namespace Msg {
    * 消息
    */
   export type Message = {
-    chat_id: number;
-    chat_type: ChatType;
-    group_id: number;
-    link_id: string;
-    msg_id: string;
+    chat_id?: number;
+    chat_type?: ChatType;
+    group_id?: number;
+    link_id?: string;
+    msg_id?: string;
     msg_meta?: MsgMeta;
-    msg_type: MsgType;
-    sender: number;
-    receiver: number;
-    timestamp: number;
-    content: string;
-    media: MediaType[];
+    msg_type?: MsgType;
+    sender: ?number;
+    receiver?: number;
+    timestamp?: number;
+    content?: string;
+    media?: MediaType[];
   };
-  /**
-   * 消息类型
-   * 0: 文本
-   * 1: 图片
-   * 2: 文件
-   * 3: 音频
-   * 4: 视频
-   */
-  export const enum MsgType {
-    Text = 0,
-    Image = 1,
-    File = 2,
-    Audio = 3,
-    Video = 4,
-  }
-  /**
-   * 聊天类型
-   * 0: 私聊
-   * 1: 群聊
-   * 2: 系统消息
-   * 3: 系统通知
-   */
-  export const enum ChatType {
-    PrivateChat = 0,
-    GroupChat = 1,
-    SystemMessage = 2,
-    SystemNotice = 3,
-  }
+
   /**
    * 消息内容
    *

@@ -3,6 +3,8 @@ module.exports = {
   rules: {
     '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/no-explicit-any': 'off', // 关闭any类型的警告
+    '@typescript-eslint/no-unused-expressions': 'off',
+
     'no-console': 'off',
     indent: ['off', 2],
     'no-unused-vars': 'off', // 未使用变量

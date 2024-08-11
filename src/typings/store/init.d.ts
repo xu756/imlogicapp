@@ -5,5 +5,6 @@ declare namespace Store {
     name: string;
     version: string;
     description: string;
+    wsUrl: string;
   };
 }

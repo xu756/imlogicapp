@@ -15,6 +15,7 @@ export async function getInitialState() {
     name: 'Imlogic',
     version: '1.0.0',
     description: '让科技生活更简单',
+    wsUrl: '/api/im/connect',
   };
   return InitData;
 }
