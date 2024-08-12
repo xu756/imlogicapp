@@ -29,7 +29,7 @@ export default defineConfig({
   // /api 会被代理到 http://
   proxy: {
     '/api': {
-      target: 'https://dev.imlogic.cn/api/',
+      target: 'http://192.168.0.105/api/',
       changeOrigin: true,
       pathRewrite: { '^/api': '' },
     },

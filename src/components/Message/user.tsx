@@ -16,5 +16,5 @@ export const MessageUserAvatar = ({ userId }: MessageUserProps) => {
       console.error(e);
     }
   });
-  return <Avatar src={userInfo.avatar} alt={userInfo.name} />;
+  return <Avatar shape="square" src={userInfo.avatar} alt={userInfo.name} />;
 };
