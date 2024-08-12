@@ -2,24 +2,14 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  overflow: hidden;
 }
 
 .header {
-  text-align: center;
-  flex: 0 0 auto;
+  height: 50px;
 }
 
-.footer {
-  text-align: center;
-  flex: 0 0 auto;
-}
-
-.content {
-  flex: 1;
-  text-align: center;
-  padding: 20px;
-  overflow-y: auto;
+.body {
+  height: calc(100% - 50px);
 }
 
 .chat {
@@ -87,11 +77,29 @@
 
   &-body {
     display: flex;
+    height: 100%;
     flex-direction: column;
-    align-items: flex-start;
+  }
+  &-messages {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100%;
+    flex-direction: column;
+    display: flex;
     gap: 32px;
+    height: 100%;
+    padding: 10px;
+  }
+  &-input {
+    flex: 0 0 auto;
+    padding: 10px;
+    &-emoji {
+      padding: 0 10px;
+    }
+    &-send {
+      padding: 0 10px;
+    }
   }
 }

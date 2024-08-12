@@ -2,8 +2,9 @@ import { useModel } from '@umijs/max';
 import { useMap, useUpdateEffect } from 'ahooks';
 import { useRef } from 'react';
 import MessageItem from '../Message';
+import ChatInput from './ChatInput';
 
-const ChatList = () => {
+const ChatBody = () => {
   let chat_id = 2222;
   const { lastMsg } = useModel('chat', (model) => ({
     lastMsg: model.lastMsg,
@@ -23,12 +24,18 @@ const ChatList = () => {
     }
   }, [messges]);
   return (
-    <div className="chat-body" ref={chatBodyRef}>
-      {Array.from(messges).map(([msg_id, msg]) => (
-        <MessageItem key={msg.msg_id} {...msg} />
-      ))}
+    <div className="chat-body">
+      <div className="chat-messages" ref={chatBodyRef}>
+        {Array.from(messges).map(([msg_id, msg]) => (
+          <MessageItem key={msg.msg_id} {...msg} />
+        ))}
+      </div>
+      <div className="chat-line" />
+      <div className="chat-input">
+        <ChatInput />
+      </div>
     </div>
   );
 };
 
-export default ChatList;
+export default ChatBody;
