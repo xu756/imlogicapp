@@ -1,3 +1,4 @@
+import { ChatType } from '@/typings/msg/enum';
 import { useModel } from '@umijs/max';
 import { useMap, useUpdateEffect } from 'ahooks';
 import { useRef } from 'react';
@@ -13,6 +14,7 @@ const ChatBody = () => {
   const [messges, { set }] = useMap<string, Msg.Message>([]);
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const { initialState } = useModel('@@initialState');
+  const { sendMsg } = useModel('chat');
 
   useUpdateEffect(() => {
     if (lastMsg.chat_id === chat_id) {
@@ -25,8 +27,9 @@ const ChatBody = () => {
       chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
     }
   }, [messges]);
-  const sendMsg = (msg: Msg.Message) => {
-    // send message to server
+  const newChatMsg = (msg: Msg.Message) => {
+    sendMsg(msg);
+    set(msg.msg_id, msg);
   };
   return (
     <div className="chat-body">
@@ -38,10 +41,11 @@ const ChatBody = () => {
       <div className="chat-line" />
       <div className="chat-input">
         <ChatInput
-          sendMsg={sendMsg}
+          sendMsg={newChatMsg}
+          chat_type={ChatType.PrivateChat}
           chat_id={chat_id}
           sender={initialState?.user.id || 0}
-          receiver={2}
+          receiver={receiver}
         />
       </div>
     </div>

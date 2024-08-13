@@ -2,17 +2,11 @@ import { ChatType } from '@/typings/msg/enum';
 export class WebSocketService {
   private ws: WebSocket | null = null;
   private readonly url: string;
-  private sender: number;
   private heartbeatTimer: NodeJS.Timeout | null = null;
   public msgLogic(msg: Msg.Message): void {}
-  constructor(
-    url: string,
-    sender: number,
-    msgLogic: (msg: Msg.Message) => void,
-  ) {
+  constructor(url: string, msgLogic: (msg: Msg.Message) => void) {
     this.url = url;
     this.msgLogic = msgLogic;
-    this.sender = sender;
   }
   connect(): void {
     this.ws = new WebSocket(this.url);
@@ -67,11 +61,10 @@ export class WebSocketService {
   heartbeat(): void {
     this.heartbeatTimer = setInterval(() => {
       this.send({
-        sender: this.sender,
         chat_type: ChatType.SystemMessage,
         timestamp: Date.now(),
         content: 'ping',
       } as Msg.Message);
-    }, 10000);
+    }, 60000);
   }
 }

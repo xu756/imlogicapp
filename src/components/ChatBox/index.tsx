@@ -1,4 +1,3 @@
-import { WebSocketService } from '@/services/ws';
 import { useModel } from '@umijs/max';
 import { useMount } from 'ahooks';
 import ChatBody from './ChatBody';
@@ -7,12 +6,13 @@ import './index.less';
 import styles from './index.less';
 const Chat = () => {
   const { initialState } = useModel('@@initialState');
-  const { newChatMsg } = useModel('chat');
+  const { connect } = useModel('chat');
 
   useMount(() => {
     if (initialState?.wsUrl) {
-      const ws = new WebSocketService(initialState?.wsUrl, 1111, newChatMsg);
-      ws.connect();
+      // const ws = new WebSocketService(initialState?.wsUrl, 1111, newChatMsg);
+      // ws.connect();
+      connect(initialState?.wsUrl, 21474836482);
     }
   });
   return (

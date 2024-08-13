@@ -1,38 +1,45 @@
-import { MsgType } from '@/typings/msg/enum';
+import { ChatType, MsgType } from '@/typings/msg/enum';
 import { FolderAddFilled } from '@ant-design/icons';
-import { useSetState } from 'ahooks';
 import { Button, Col, Input, Row } from 'antd';
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 interface IData {
   chat_id: number;
+  chat_type: ChatType;
   sender: number;
   receiver: number;
   sendMsg: (msg: Msg.Message) => void;
 }
-const ChatInput = ({ chat_id, sender, receiver, sendMsg }: IData) => {
+
+const ChatInput = ({
+  chat_id,
+  sender,
+  receiver,
+  chat_type,
+  sendMsg,
+}: IData) => {
   const [text, setText] = useState<string>('你好');
-  const [message, setMessage] = useSetState<Msg.Message>({
-    chat_id,
-    msg_id: uuidv4(),
-    sender,
-    receiver,
-  } as Msg.Message);
-  const OnSendMsg = () => {
-    setMessage({
-      ...message,
-      msg_type: MsgType.Text,
-      content: text,
-    });
-    sendMsg(message);
-    setMessage({
+  const newTextMsg = (text: string) => {
+    return {
       chat_id,
+      chat_type,
+      group_id: 0,
       msg_id: uuidv4(),
+      msg_type: MsgType.Text,
       sender,
       receiver,
-    } as Msg.Message);
-    setText('');
+      content: text,
+      timestamp: Date.now(),
+      media: [],
+    } as Msg.Message;
+  };
+
+  const OnSendMsg = () => {
+    if (!text) {
+      return;
+    }
+    sendMsg(newTextMsg(text));
   };
   return (
     <Row wrap={false}>

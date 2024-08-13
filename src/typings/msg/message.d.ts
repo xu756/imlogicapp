@@ -7,10 +7,10 @@ declare namespace Msg {
   export type Message = {
     chat_id: number;
     chat_type: ChatType;
-    group_id: number;
-    link_id: string;
+    group_id?: number;
+    link_id?: string;
     msg_id: string;
-    msg_meta: MsgMeta;
+    msg_meta?: MsgMeta;
     msg_type: MsgType;
     sender: number;
     receiver: number;
@@ -65,10 +65,10 @@ declare namespace Msg {
   //   /**
   //    * 消息元数据
   //    */
-  //   export type MsgMeta = {
-  //     detail: 'connect' | 'disconnect' | 'heartbeat';
-  //     version: string;
-  //   };
+  export type MsgMeta = {
+    detail: 'connect' | 'disconnect' | 'heartbeat';
+    version: string;
+  };
   //   /**
   //    * 图片
   //    */
