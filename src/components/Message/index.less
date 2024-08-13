@@ -17,6 +17,10 @@
         .chat-message-item-sender {
           justify-content: end;
         }
+        .chat-message-item-content-text {
+          background: #615ef0;
+          color: #fff;
+        }
       }
       &-sender {
         width: 48px;
@@ -24,6 +28,28 @@
       }
       &-content {
         max-width: 60%;
+        padding-bottom: 15px;
+        position: relative;
+        // 消息时间
+        &-time {
+          position: absolute;
+          bottom: 0;
+          text-align: left;
+          color: #000;
+          font-size: 12px;
+          font-style: normal;
+          display: none;
+          // 不可选中
+          user-select: none;
+        }
+        &:hover {
+          // content 里面的time显示
+          .chat-message-item-content-time {
+            display: block;
+          }
+        }
+
+        // 文本消息
         &-text {
           padding: 8px 16px;
           border-radius: 12px;
@@ -35,9 +61,9 @@
           font-weight: 400;
           line-height: 150%; /* 21px */
         }
+        // 图片消息
         &-image {
           display: flex;
-          // 纵向排列
           flex-direction: column;
           padding: 8px 16px 12px 16px;
           border-radius: 12px;

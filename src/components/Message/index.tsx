@@ -1,6 +1,7 @@
 import { MsgType } from '@/typings/msg/enum';
 import { useModel } from '@umijs/max';
 import { Image } from 'antd';
+import dayjs from 'dayjs';
 
 import { MessageUserAvatar } from './user';
 const MessageItemContent = (msg: Msg.Message) => {
@@ -42,6 +43,9 @@ const MessageItem = (msg: Msg.Message) => {
       </div>
       <div className="chat-message-item-content">
         <MessageItemContent {...msg} />
+        <div className="chat-message-item-content-time">
+          {dayjs().to(dayjs(msg.timestamp))}
+        </div>
       </div>
     </div>
   );
