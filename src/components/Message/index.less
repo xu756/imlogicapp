@@ -1,25 +1,39 @@
-.chat-message {
-  width: 100%;
-  display: flex;
-  // 左右分布 顶部对齐
-  justify-content: start;
-  align-items: flex-start;
-
-  &-sender {
-    width: 48px;
-    display: flex;
-    justify-content: start;
-  }
-  &-content {
-    max-width: 60%;
-    padding: 8px 16px;
-    border-radius: 12px;
-    background: #f1f1f1;
-    text-align: justify;
-    color: #000;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 150%; /* 21px */
+.chat {
+  &-message {
+    &-item {
+      width: 100%;
+      display: flex;
+      // 左右分布 顶部对齐
+      align-items: flex-start;
+      &-left {
+        justify-content: start;
+        .chat-message-sender {
+          justify-content: start;
+        }
+      }
+      &-right {
+        justify-content: end;
+        flex-flow: row-reverse;
+        .chat-message-sender {
+          justify-content: flex-end;
+        }
+      }
+      &-sender {
+        width: 48px;
+        display: flex;
+      }
+      &-content {
+        max-width: 60%;
+        padding: 8px 16px;
+        border-radius: 12px;
+        background: #f1f1f1;
+        text-align: justify;
+        color: #000;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%; /* 21px */
+      }
+    }
   }
 }
