@@ -4,11 +4,13 @@ import {
   SettingOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { history } from '@umijs/max';
+import { history, useModel } from '@umijs/max';
 import type { MenuProps } from 'antd';
 import { Avatar, Button, Dropdown, Space } from 'antd';
 import styles from './index.less';
 export default () => {
+  const { initialState } = useModel('@@initialState');
+
   const logout = () => {
     delCookie('ImlogicToken');
     history.push('/login');
@@ -38,10 +40,7 @@ export default () => {
     <Dropdown menu={{ items }} placement="bottomLeft">
       <Button type="text" block className={styles.btn}>
         <Space size={10} direction="vertical">
-          <Avatar
-            src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
-            alt="avatar"
-          />
+          <Avatar src={initialState?.user?.avatar} alt="avatar" />
         </Space>
       </Button>
     </Dropdown>
