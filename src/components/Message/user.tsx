@@ -1,4 +1,4 @@
-import { getUserOneInfo } from '@/services';
+import { useModel } from '@umijs/max';
 import { useMount, useSetState } from 'ahooks';
 import { Avatar } from 'antd';
 
@@ -7,11 +7,14 @@ interface MessageUserProps {
 }
 export const MessageUserAvatar = ({ userId }: MessageUserProps) => {
   const [userInfo, setUserInfo] = useSetState<API.UserInfo>({} as API.UserInfo);
+  const { getOneUser } = useModel('user');
   useMount(async () => {
     // 获取用户信息
     try {
-      const res = await getUserOneInfo({ id: userId });
-      setUserInfo(res);
+      const res = await getOneUser(userId);
+      if (res) {
+        setUserInfo(res);
+      }
     } catch (e) {
       console.error(e);
     }
