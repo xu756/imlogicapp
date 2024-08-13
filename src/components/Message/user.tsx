@@ -1,4 +1,4 @@
-import { getUserInfo } from '@/services';
+import { getUserOneInfo } from '@/services';
 import { useMount, useSetState } from 'ahooks';
 import { Avatar } from 'antd';
 
@@ -10,7 +10,7 @@ export const MessageUserAvatar = ({ userId }: MessageUserProps) => {
   useMount(async () => {
     // 获取用户信息
     try {
-      const res = await getUserInfo({ id: userId });
+      const res = await getUserOneInfo({ id: userId });
       setUserInfo(res);
     } catch (e) {
       console.error(e);

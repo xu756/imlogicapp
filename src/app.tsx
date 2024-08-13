@@ -1,6 +1,8 @@
+import { getUserInfo } from '@/services';
 import { RequestConfig } from '@@/plugin-request/request';
 import { history, useModel } from '@umijs/max';
 import { message } from 'antd';
+
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn'; // 导入本地化语言
 import relativeTime from 'dayjs/plugin/relativeTime'; // 导入插件
@@ -16,7 +18,14 @@ export async function getInitialState() {
     version: '1.0.0',
     description: '让科技生活更简单',
     wsUrl: '/api/im/connect',
+    user: {} as API.UserInfo,
   };
+  try {
+    const res = await getUserInfo();
+    InitData.user = res;
+  } catch (e) {
+    console.error(e);
+  }
   return InitData;
 }
 export const layout: any = () => {

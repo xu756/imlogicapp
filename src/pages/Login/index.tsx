@@ -1,4 +1,4 @@
-import { accountLogin, mobileLogin } from '@/services';
+import { accountLogin, getUserInfo, mobileLogin } from '@/services';
 
 import { LockOutlined, MobileOutlined, UserOutlined } from '@ant-design/icons';
 import {
@@ -22,7 +22,7 @@ export default () => {
   const { token } = theme.useToken();
   const [form] = ProForm.useForm();
   const [loginType, setLoginType] = useState<LoginType>('account');
-  const { initialState } = useModel('@@initialState');
+  const { initialState, setInitialState } = useModel('@@initialState');
   const sessionId = localStorage.getItem('session_id');
   const [jwt, setJwt] = useCookieState('ImlogicToken');
   useMount(() => {
@@ -33,6 +33,21 @@ export default () => {
       navigate('/');
     }
   });
+  const InitUserInfo = async () => {
+    try {
+      const res = await getUserInfo();
+      if (initialState) {
+        setInitialState({
+          ...initialState,
+          user: res,
+        });
+      }
+      message.success('登录成功！');
+      navigate('/');
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   // 登录
   const handleLogin = async (values: API.LoginReq) => {
@@ -45,8 +60,7 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
-        message.success('登录成功！');
-        navigate('/');
+        InitUserInfo();
         // updateUserAccess();
       } catch (e) {
         form.resetFields();
@@ -58,8 +72,7 @@ export default () => {
           path: location.origin,
           expires: (() => new Date(+new Date() + hour * 60 * 60 * 1000))(),
         });
-        message.success('登录成功！');
-        navigate('/');
+        InitUserInfo();
         // updateUserAccess();
       } catch (e) {
         form.resetFields();

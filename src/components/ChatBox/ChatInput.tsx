@@ -9,6 +9,11 @@ interface IData {
 }
 const ChatInput = ({ chat_id, sender, receiver }: IData) => {
   const [text, setText] = useState<string>();
+  const [message, setMessage] = useState<Msg.Message>({
+    chat_id,
+    sender,
+    receiver,
+  } as Msg.Message);
   return (
     <Row wrap={false}>
       <Col flex="none">

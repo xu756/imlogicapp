@@ -6,5 +6,6 @@ declare namespace Store {
     version: string;
     description: string;
     wsUrl: string;
+    user: API.UserInfo;
   };
 }
