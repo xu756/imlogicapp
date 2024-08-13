@@ -4,10 +4,12 @@ import { useMap, useUpdateEffect } from 'ahooks';
 import { useRef } from 'react';
 import MessageItem from '../Message';
 import ChatInput from './ChatInput';
-
-const ChatBody = () => {
-  const chat_id = 2222;
-  const receiver = 21474836484;
+interface IData {
+  receiver: number;
+  chat_id: number;
+  group_id: number;
+}
+const ChatBody = ({ receiver, chat_id }: IData) => {
   const { lastMsg } = useModel('chat', (model) => ({
     lastMsg: model.lastMsg,
   }));

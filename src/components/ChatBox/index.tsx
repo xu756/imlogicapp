@@ -1,3 +1,4 @@
+import { ChatType } from '@/typings/msg/enum';
 import { useModel } from '@umijs/max';
 import { useMount } from 'ahooks';
 import ChatBody from './ChatBody';
@@ -7,6 +8,10 @@ import styles from './index.less';
 const Chat = () => {
   const { initialState } = useModel('@@initialState');
   const { connect } = useModel('chat');
+  const receiver = 21474836484;
+  const chat_id = 2222;
+  const group_id = 0;
+  const chat_type: ChatType = ChatType.PrivateChat;
 
   useMount(() => {
     if (initialState?.wsUrl) {
@@ -18,11 +23,15 @@ const Chat = () => {
   return (
     <div className={styles.layout}>
       <div className={styles.header}>
-        <ChatHeader username={initialState?.name} avatar={initialState?.logo} />
+        <ChatHeader
+          receiver={receiver}
+          group_id={group_id}
+          chat_type={chat_type}
+        />
         <div className="chat-line" />
       </div>
       <div className={styles.body}>
-        <ChatBody />
+        <ChatBody receiver={receiver} chat_id={chat_id} group_id={group_id} />
       </div>
     </div>
   );
