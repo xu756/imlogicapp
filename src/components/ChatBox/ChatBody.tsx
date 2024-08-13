@@ -38,6 +38,7 @@ const ChatBody = () => {
       <div className="chat-line" />
       <div className="chat-input">
         <ChatInput
+          sendMsg={sendMsg}
           chat_id={chat_id}
           sender={initialState?.user.id || 0}
           receiver={2}
