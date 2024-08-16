@@ -44,7 +44,7 @@ const MessageItem = (msg: Msg.Message) => {
       <div className="chat-message-item-content">
         <MessageItemContent {...msg} />
         <div className="chat-message-item-content-time">
-          {dayjs().to(dayjs(msg.timestamp))}
+          {dayjs(msg.timestamp).format('YYYY-MM-DD HH:mm:ss')}
         </div>
       </div>
     </div>
