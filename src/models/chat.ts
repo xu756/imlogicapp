@@ -23,9 +23,11 @@ export default () => {
   const [lastMsg, setLastMsg] = useSetState<Msg.Message>({} as Msg.Message);
   const [ws, swtWs] = useState<WebSocketService>();
   const connect = (url: string, user: number) => {
-    const newws = new WebSocketService(url, newChatMsg);
-    newws.connect();
-    swtWs(newws);
+    if (ws === undefined) {
+      const newws = new WebSocketService(url, newChatMsg);
+      newws.connect();
+      swtWs(newws);
+    }
   };
   const disconnect = () => {
     ws?.disconnect();
